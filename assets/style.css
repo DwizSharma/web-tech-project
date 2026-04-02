@@ -1,0 +1,522 @@
+/* ==========================================================================
+   CSS Variables & Theming
+   ========================================================================== */
+:root, [data-theme="light"] {
+    --bg-color: #f8f9fa;
+    --content-bg: #ffffff;
+    --text-primary: #1a1a1b;
+    --text-secondary: #787c7e;
+    --border-color: #edeff1;
+    --nav-bg: #ffffff;
+    --primary-color: #0079d3;
+    --primary-hover: #3293db;
+    --accent-color: #ff4500; /* Reddit orange vibe */
+    --danger-color: #ea0027;
+    --btn-text: #ffffff;
+    --input-bg: #f6f7f8;
+    --input-border: #edeff1;
+    --hover-overlay: rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --transition-speed: 0.3s;
+}
+
+[data-theme="dark"], .theme-dark {
+    --bg-color: #030303;
+    --content-bg: #1a1a1a;
+    --text-primary: #d7dadc;
+    --text-secondary: #818384;
+    --border-color: #343536;
+    --nav-bg: #1a1a1a;
+    --primary-color: #3293db;
+    --primary-hover: #0079d3;
+    --input-bg: #272729;
+    --input-border: #343536;
+    --hover-overlay: rgba(255, 255, 255, 0.1);
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.2);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.5;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+a:hover {
+    color: var(--primary-hover);
+}
+
+/* ==========================================================================
+   Navigation Bar
+   ========================================================================== */
+.navbar {
+    background-color: var(--nav-bg);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.brand-logo:hover {
+    color: var(--accent-color);
+}
+
+.nav-center {
+    flex-grow: 1;
+    max-width: 600px;
+    margin: 0 20px;
+}
+
+.search-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border-radius: 20px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    outline: none;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.search-input:focus {
+    background-color: var(--content-bg);
+    border-color: var(--primary-color);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.icon-btn:hover {
+    background-color: var(--hover-overlay);
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--btn-text);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    color: var(--btn-text);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--hover-overlay);
+}
+
+/* ==========================================================================
+   Profile Dropdown
+   ========================================================================== */
+.profile-dropdown-wrapper {
+    position: relative;
+}
+
+.profile-dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
+.profile-dropdown-btn:hover {
+    border-color: var(--border-color);
+}
+
+.avatar-sm {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.avatar-placeholder-sm {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+    background-color: var(--content-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    min-width: 200px;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.dropdown-menu.show {
+    display: flex;
+}
+
+.dropdown-item {
+    padding: 12px 16px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dropdown-item:hover {
+    background-color: var(--hover-overlay);
+}
+
+.dropdown-divider {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 4px 0;
+}
+
+.text-danger {
+    color: var(--danger-color);
+}
+
+/* ==========================================================================
+   Layout & Cards
+   ========================================================================== */
+.main-content {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+    min-height: calc(100vh - 150px);
+}
+
+.post-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card {
+    background-color: var(--content-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.card:hover {
+    border-color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Post Specifics
+   ========================================================================== */
+.post {
+    display: flex;
+}
+
+.post-vote-col {
+    background-color: var(--input-bg);
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.vote-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    transition: color 0.2s;
+}
+
+.vote-btn.upvote:hover, .vote-btn.upvoted {
+    color: var(--accent-color);
+}
+
+.vote-btn.downvote:hover, .vote-btn.downvoted {
+    color: #7193ff;
+}
+
+.vote-count {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.post-content-col {
+    padding: 10px 15px;
+    flex-grow: 1;
+}
+
+.post-meta {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.post-author {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.post-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.post-body {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.post-image {
+    max-width: 100%;
+    border-radius: var(--radius-sm);
+    margin-bottom: 12px;
+}
+
+.post-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    background-color: var(--hover-overlay);
+}
+
+/* ==========================================================================
+   Forms (Login/Register/Create Post)
+   ========================================================================== */
+.form-container {
+    max-width: 500px;
+    margin: 40px auto;
+    background-color: var(--content-bg);
+    padding: 30px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.form-title {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid var(--input-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.alert {
+    padding: 10px 15px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.alert-danger {
+    background-color: rgba(234, 0, 39, 0.1);
+    color: var(--danger-color);
+    border: 1px solid var(--danger-color);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+    background-color: var(--content-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 20px 0;
+    margin-top: auto;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-links {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-center {
+        display: none; /* Hide search on small screens for simplicity */
+    }
+}
